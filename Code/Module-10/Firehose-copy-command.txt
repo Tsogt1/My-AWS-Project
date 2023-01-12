@@ -1,0 +1,19 @@
+COPY firehosetransactions FROM 's3://myfirehoseredshift2/<manifest>'
+CREDENTIALS 'aws_iam_role=arn:aws:iam::<aws-account-id>:role/<role-name>' 
+MANIFEST json 's3://myfirehoseredshift2/jsonpaths.json';
+
+
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "VisualEditor0",
+            "Effect": "Allow",
+            "Action": [
+                "s3:PutObject",
+                "s3:GetObject"
+            ],
+            "Resource": "arn:aws:s3:::myaws-bulkimport2/*"
+        }
+    ]
+}
